@@ -1,5 +1,9 @@
-const div = [];
+const containerDiv = document.querySelector("#container");
 
-for (let i = 0; i < 16; i++) {
-  div[i] = document.createElement("div");
+let numOfCells = 16;
+
+for (let i = 0; i < numOfCells; i++) {
+  const div = document.createElement("div");
+  div.setAttribute("id", "cell");
+  containerDiv.appendChild(div);
 }
