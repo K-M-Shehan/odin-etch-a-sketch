@@ -38,30 +38,33 @@ function drawGrid(cells) {
   } 
 }
 
-function removeGrid(cells) {
-  let grid = cells * cells;
-
-  for (let i = 0; i < grid; i++) {
+function removeGrid() {
+  while (containerDiv.children.length > 0) {    // recursively removes all cells in grid
     containerDiv.removeChild(document.querySelector("#cell"));
-  } 
+  }
 }
 
 drawGrid(numOfCells); // default grid that is drawn
 
+let prevNumOfCells;
+
 sizeBtn.addEventListener("click", () => {
-  let prevNumOfCells = numOfCells;
+  prevNumOfCells = numOfCells;
 
   do {
     numOfCells = prompt("Enter new size (size x size)\nRange: 1 - 100");
   } while (numOfCells > limit && numOfCells > 0); // user can only enter size in range 1 - 100
 
   if(numOfCells != null) {
-    removeGrid(prevNumOfCells);
+    removeGrid();
     drawGrid(numOfCells);
   }
 })
 
 clearBtn.addEventListener("click", () => {
-  removeGrid(numOfCells);
+  removeGrid();
+  if(numOfCells == null) {      // another bug fix for when prompt is null, without this it will try to draw an empty grid 
+    numOfCells = prevNumOfCells;
+  }
   drawGrid(numOfCells);
 })
