@@ -4,16 +4,27 @@ const button = document.querySelector("#size-btn");
 let numOfCells = 16;
 const limit = 100;
 
+function randomColor() {
+  min = 0;
+  max = 255;
+
+  return Math.floor(Math.random() * (max - min + 1) + min); // gives a number between 0-255 inclusive
+}
+
 function drawGrid(cells) {
   let grid = cells * cells;
 
   for (let i = 0; i < grid; i++) {
     const div = document.createElement("div");
     div.setAttribute("id", "cell");
+    div.style.setProperty("--colored", "0");  // not colored yet
     div.style.flex = "0 0 " + (100 / numOfCells) + "%"; // gets the particular column size
     containerDiv.appendChild(div);
     div.addEventListener("mouseover", () => {
-      div.style.backgroundColor = "black";
+      if (div.style.getPropertyValue("--colored").trim() != 1) {  // only colors if cell is not colored
+        div.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"; // random color for each cell
+        div.style.setProperty("--colored", "1"); // set to 1 as its colored
+      }
     })
   } 
 }
