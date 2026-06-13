@@ -1,0 +1,40 @@
+html {
+  background-color: #FDFBD4;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  border-radius: 8px;
+  border: 10px solid green;
+}
+
+#cell {
+  background-color: lightblue;
+  aspect-ratio: 1 / 1;
+}
+
+#size-btn {
+  border: none;
+  background-color: crimson;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  width: 10rem;
+  height: 3rem;
+}
+
+#size-btn:hover {
+  background-color: black;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  margin-top: 10px;
+}
