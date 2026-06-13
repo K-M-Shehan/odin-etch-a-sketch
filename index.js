@@ -23,7 +23,12 @@ function drawGrid(cells) {
     div.addEventListener("mouseover", () => {
       if (div.style.getPropertyValue("--colored").trim() != 1) {  // only colors if cell is not colored
         div.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"; // random color for each cell
+        div.style.opacity = "0.1";
         div.style.setProperty("--colored", "1"); // set to 1 as its colored
+      }
+      else if (div.style.getPropertyValue("--colored").trim() == 1 && div.style.opacity != 1) {
+        let opacity = parseFloat(div.style.opacity);
+        div.style.opacity = (opacity + 0.1).toFixed(1); // increments opacity, therefore darkens color
       }
     })
   } 
