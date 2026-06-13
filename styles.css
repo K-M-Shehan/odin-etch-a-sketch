@@ -7,9 +7,8 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   width: 800px;
-  padding: 10px;
-  background-color: green;
   border-radius: 8px;
+  border: 10px solid green;
 }
 
 #cell {
