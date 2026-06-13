@@ -1,5 +1,5 @@
 const containerDiv = document.querySelector("#container");
-const button = document.querySelector("#size-btn");
+const sizeBtn = document.querySelector("#size-btn");
 const clearBtn = document.querySelector("#clear-btn");
 
 let numOfCells = 16;
@@ -43,21 +43,22 @@ function removeGrid(cells) {
   } 
 }
 
-function clearGrid(cells) {
-  drawGrid(cells);
-}
-
 drawGrid(numOfCells); // default grid that is drawn
 
-button.addEventListener("click", () => {
-  removeGrid(numOfCells);
+sizeBtn.addEventListener("click", () => {
+  let prevNumOfCells = numOfCells;
+
   do {
-    numOfCells = prompt("Enter new size (size x size)");
-  } while (numOfCells > limit); // user can only enter size smaller than or equal to 100
-  drawGrid(numOfCells);
+    numOfCells = prompt("Enter new size (size x size)\nRange: 1 - 100");
+  } while (numOfCells > limit && numOfCells > 0); // user can only enter size in range 1 - 100
+
+  if(numOfCells != null) {
+    removeGrid(prevNumOfCells);
+    drawGrid(numOfCells);
+  }
 })
 
 clearBtn.addEventListener("click", () => {
   removeGrid(numOfCells);
-  clearGrid(numOfCells);
+  drawGrid(numOfCells);
 })
