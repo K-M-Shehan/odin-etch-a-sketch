@@ -2,6 +2,11 @@ html {
   background-color: #FDFBD4;
 }
 
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
 #container {
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +21,7 @@ html {
   aspect-ratio: 1 / 1;
 }
 
-#size-btn {
+.btn {
   border: none;
   background-color: crimson;
   color: white;
@@ -24,9 +29,10 @@ html {
   font-size: 20px;
   width: 10rem;
   height: 3rem;
+  margin: 0 10px;
 }
 
-#size-btn:hover {
+.btn:hover {
   background-color: black;
 }
 
@@ -37,4 +43,20 @@ html {
 
 .main {
   margin-top: 10px;
+}
+
+.github-img {
+  width: 30px;
+  margin-top: 7px;
+}
+
+.github-img:hover {
+  width: 35px;
+}
+
+footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

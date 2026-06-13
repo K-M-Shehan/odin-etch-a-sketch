@@ -1,5 +1,6 @@
 const containerDiv = document.querySelector("#container");
-const button = document.querySelector("#size-btn");
+const sizeBtn = document.querySelector("#size-btn");
+const clearBtn = document.querySelector("#clear-btn");
 
 let numOfCells = 16;
 const limit = 100;
@@ -16,14 +17,17 @@ function drawGrid(cells) {
 
   for (let i = 0; i < grid; i++) {
     const div = document.createElement("div");
+
     div.setAttribute("id", "cell");
     div.style.setProperty("--colored", "0");  // not colored yet
     div.style.flex = "0 0 " + (100 / numOfCells) + "%"; // gets the particular column size
+
     containerDiv.appendChild(div);
+
     div.addEventListener("mouseover", () => {
       if (div.style.getPropertyValue("--colored").trim() != 1) {  // only colors if cell is not colored
         div.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"; // random color for each cell
-        div.style.opacity = "0.1";
+        div.style.opacity = "0.1";  // default opacity for a cell
         div.style.setProperty("--colored", "1"); // set to 1 as its colored
       }
       else if (div.style.getPropertyValue("--colored").trim() == 1 && div.style.opacity != 1) {
@@ -44,10 +48,20 @@ function removeGrid(cells) {
 
 drawGrid(numOfCells); // default grid that is drawn
 
-button.addEventListener("click", () => {
-  removeGrid(numOfCells);
+sizeBtn.addEventListener("click", () => {
+  let prevNumOfCells = numOfCells;
+
   do {
-    numOfCells = prompt("Enter new size (size x size)");
-  } while (numOfCells > limit); // user can only enter size smaller than or equal to 100
+    numOfCells = prompt("Enter new size (size x size)\nRange: 1 - 100");
+  } while (numOfCells > limit && numOfCells > 0); // user can only enter size in range 1 - 100
+
+  if(numOfCells != null) {
+    removeGrid(prevNumOfCells);
+    drawGrid(numOfCells);
+  }
+})
+
+clearBtn.addEventListener("click", () => {
+  removeGrid(numOfCells);
   drawGrid(numOfCells);
 })
