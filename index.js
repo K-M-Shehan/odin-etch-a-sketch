@@ -17,14 +17,17 @@ function drawGrid(cells) {
 
   for (let i = 0; i < grid; i++) {
     const div = document.createElement("div");
+
     div.setAttribute("id", "cell");
     div.style.setProperty("--colored", "0");  // not colored yet
     div.style.flex = "0 0 " + (100 / numOfCells) + "%"; // gets the particular column size
+
     containerDiv.appendChild(div);
+
     div.addEventListener("mouseover", () => {
       if (div.style.getPropertyValue("--colored").trim() != 1) {  // only colors if cell is not colored
         div.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"; // random color for each cell
-        div.style.opacity = "0.1";
+        div.style.opacity = "0.1";  // default opacity for a cell
         div.style.setProperty("--colored", "1"); // set to 1 as its colored
       }
       else if (div.style.getPropertyValue("--colored").trim() == 1 && div.style.opacity != 1) {
