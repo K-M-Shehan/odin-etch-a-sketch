@@ -2,6 +2,7 @@ const containerDiv = document.querySelector("#container");
 const button = document.querySelector("#size-btn");
 
 let numOfCells = 16;
+const limit = 100;
 
 function drawGrid(cells) {
   let grid = cells * cells;
@@ -29,6 +30,8 @@ drawGrid(numOfCells); // default grid that is drawn
 
 button.addEventListener("click", () => {
   removeGrid(numOfCells);
-  numOfCells = prompt("Enter new size (size x size)");
+  do {
+    numOfCells = prompt("Enter new size (size x size)");
+  } while (numOfCells > limit); // user can only enter size smaller than or equal to 100
   drawGrid(numOfCells);
 })
