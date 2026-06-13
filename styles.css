@@ -4,6 +4,7 @@ html {
 
 h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 }
 
 #container {
@@ -42,4 +43,20 @@ h1 {
 
 .main {
   margin-top: 10px;
+}
+
+.github-img {
+  width: 30px;
+  margin-top: 7px;
+}
+
+.github-img:hover {
+  width: 35px;
+}
+
+footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
